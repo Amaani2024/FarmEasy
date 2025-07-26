@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sri Lankan Village Products</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://i.imgur.com/dt3T0on.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: fadeBg 20s infinite alternate;
+            color: #fff;
+        }
+
+        @keyframes fadeBg {
+            0% { filter: brightness(100%); }
+            100% { filter: brightness(85%); }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #ffda6b;
+            margin-bottom: 30px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ffd700;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #a2ff9e;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #eee;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌾 Village Market Product List 🌾</h2>
+
+        @foreach($products as $product)
+            <div class="product-card">
+                <div class="product-name">{{ $product->name }}</div>
+                <div class="product-price">Price: Rs. {{ $product->price }}</div>
+                @if($product->description)
+                    <div class="product-description">{{ $product->description }}</div>
+                @endif
+            </div>
+        @endforeach
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+public function show($id)
+{
+    $product = Product::findOrFail($id); // get product or 404 if not found
+    return view('products.show', compact('product'));
+}
